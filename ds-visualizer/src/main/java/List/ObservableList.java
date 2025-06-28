@@ -9,17 +9,17 @@ public class ObservableList<T> extends ArrayList<T> {
 
     public ObservableList() {
         super();
-        this.addObserver(new ConsoleListViewer<T>());
+        this.addObserver(new FxListViewer<T>());
     }
 
     public ObservableList(int initialCapacity) {
         super(initialCapacity);
-        this.addObserver(new ConsoleListViewer<T>());
+        this.addObserver(new FxListViewer<T>());
     }
 
     public ObservableList(Collection<? extends T> c) {
         super(c);
-        this.addObserver(new ConsoleListViewer<T>());
+        this.addObserver(new FxListViewer<T>());
     }
 
     public void addObserver(ListObserver<T> observer) {
