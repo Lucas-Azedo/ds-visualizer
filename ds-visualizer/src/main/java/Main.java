@@ -1,17 +1,13 @@
-import List.ConsoleListViewer;
-import List.ObservableList;
+import List.oArrayList;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        ObservableList<Integer> list = new ObservableList<Integer>();
+        oArrayList<Integer> list1 = new oArrayList<>();
+        oArrayList<Integer> list2 = new oArrayList<>();
 
-        list.add(10);
-        list.add(20);
-        list.add(30);
-        list.add(40);
-        list.add(50);
-        list.add(60);
-        list.set(1, 15);
-        list.set(2, 25);
+        for (int i = 0; i < 1000000; i++) {
+            list1.add(i);
+            i = i + 25;
+        }
     }
 }

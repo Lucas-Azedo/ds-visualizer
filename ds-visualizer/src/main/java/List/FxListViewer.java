@@ -1,11 +1,7 @@
 package List;
 
+import Ui.FxUiWindow;
 import javafx.animation.PauseTransition;
-import javafx.application.Platform;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.LinkedList;
@@ -16,17 +12,10 @@ public class FxListViewer<T> implements ListObserver<T> {
     private final Queue<ChangeEvent<T>> eventQueue = new LinkedList<>();
     private boolean isProcessing = false;
 
-    private Stage stage;
-    private FlowPane pane;
+    private final FxUiWindow<T> window;
 
     public FxListViewer() {
-        Platform.startup(() -> {
-            stage = new Stage();
-            pane = new FlowPane();
-            stage.setTitle("Visualizador de Lista");
-            stage.setScene(new Scene(pane, 400, 100));
-            stage.show();
-        });
+        this.window = new FxUiWindow<>("Visualizador de Lista", 640, 480);
     }
 
     @Override
@@ -41,22 +30,12 @@ public class FxListViewer<T> implements ListObserver<T> {
         isProcessing = true;
         ChangeEvent<T> event = eventQueue.poll();
 
-        Platform.runLater(() -> {
-            pane.getChildren().clear();
-            for (int i = 0; i < event.list.size(); i++) {
-                Label label = new Label(event.list.get(i).toString());
-                label.setStyle("-fx-padding: 10; -fx-border-color: black;");
-                if (i == event.index) {
-                    label.setStyle(label.getStyle() + "-fx-background-color: yellow;");
-                }
-                pane.getChildren().add(label);
-            }
-        });
+        window.update(event.list, event.index);
 
         PauseTransition delay = new PauseTransition(Duration.seconds(1));
         delay.setOnFinished(e -> {
             isProcessing = false;
-            processNext(); // chama o próximo
+            processNext();
         });
         delay.play();
     }

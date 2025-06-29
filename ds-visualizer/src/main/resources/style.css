@@ -1,0 +1,43 @@
+/* styles.css */
+
+.root {
+    -fx-background-color: #121417; /* Fundo escuro da janela */
+}
+
+.flow-pane {
+    -fx-hgap: 10px;
+    -fx-vgap: 10px;
+    -fx-padding: 20px;
+    -fx-alignment: center;
+}
+
+.label {
+    -fx-background-color: #1d2327;
+    -fx-text-fill: white;
+    -fx-padding: 12px 20px;
+    -fx-border-color: #ff4081; /* Rosa vibrante */
+    -fx-border-width: 2;
+    -fx-pref-width: 70px;
+    -fx-pref-height: 50px;
+    -fx-font-family: "Consolas", "Monaco", monospace;
+    -fx-font-size: 16px;
+    -fx-alignment: center;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 4,0,0,2 );
+    -fx-cursor: default;
+    -fx-user-select: none; /* impede seleção de texto */
+    -fx-transition: background-color 0.3s ease;
+}
+
+.label:hover {
+    -fx-background-color: #2c333a;
+}
+
+.label.highlight {
+    -fx-background-color: #2271b1; /* Azul claro para destaque */
+    -fx-border-color: #1e88e5;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow( gaussian , rgba(34,113,177,0.8) , 8,0,0,4 );
+    -fx-cursor: pointer;
+}

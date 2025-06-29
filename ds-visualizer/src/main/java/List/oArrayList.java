@@ -3,21 +3,21 @@ package List;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ObservableList<T> extends ArrayList<T> {
+public class oArrayList<T> extends ArrayList<T> {
 
     private final ArrayList<ListObserver<T>> observers = new ArrayList<>();
 
-    public ObservableList() {
+    public oArrayList() {
         super();
         this.addObserver(new FxListViewer<T>());
     }
 
-    public ObservableList(int initialCapacity) {
+    public oArrayList(int initialCapacity) {
         super(initialCapacity);
         this.addObserver(new FxListViewer<T>());
     }
 
-    public ObservableList(Collection<? extends T> c) {
+    public oArrayList(Collection<? extends T> c) {
         super(c);
         this.addObserver(new FxListViewer<T>());
     }
